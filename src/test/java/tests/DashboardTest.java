@@ -2,8 +2,8 @@ package tests;
 
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import steps.FailedSteps;
 import steps.MainScreenSteps;
 import steps.ProductSteps;
 import steps.SellerSteps;
@@ -19,9 +19,9 @@ public class DashboardTest extends BaseTest {
         SellerSteps.verifySellerInfo();
     }
 
-    @Test(description = "This test to check allure report")
+    @Test(description = "This is test to check allure report")
     public void testAllureReport() {
-        Assert.assertTrue(false, "Too see it in allure report");
+        FailedSteps.failedStep();
     }
 
 }

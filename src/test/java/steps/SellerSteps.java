@@ -1,5 +1,6 @@
 package steps;
 
+import io.qameta.allure.Step;
 import models.Seller;
 import org.testng.Assert;
 import screens.ProductScreen;
@@ -7,6 +8,7 @@ import screens.SellerScreen;
 
 public class SellerSteps extends BaseStep {
 
+    @Step("Verify seller info")
     public static void verifySellerInfo() {
         ProductScreen productScreen = new ProductScreen();
         Seller sellerOnProductScreen = productScreen.getSellerModel();
@@ -17,6 +19,7 @@ public class SellerSteps extends BaseStep {
                         sellerOnSellerScreen.comparableInfo(), sellerOnSellerScreen.comparableInfo()));
     }
 
+    @Step("Click on seller")
     public static SellerScreen clickOnSeller() {
         ProductScreen productScreen = new ProductScreen();
         SellerScreen sellerScreen = productScreen.clickOnSellerAvatar();

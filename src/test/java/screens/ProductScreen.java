@@ -34,12 +34,12 @@ public class ProductScreen extends BaseScreen {
 
     public Seller getSellerModel() {
         Seller seller = new Seller();
-        seller.setName(sellerNameLabel.getText())
-                .setRate(sellerResponseRateLabel.getText())
-                .setTime(sellerResponseTimeLabel.getText())
-                .setRating(sellerRatingLabel.getText())
-                .setCity(sellerCityLabel.getText())
-                .setLikes(sellerLikeCount.getText());
+        seller.setName(sellerNameLabel.getText());
+        seller.setRate(sellerResponseRateLabel.getText());
+        seller.setTime(sellerResponseTimeLabel.getText());
+        seller.setRating(sellerRatingLabel.getText());
+        seller.setCity(sellerCityLabel.getText());
+        seller.setLikes(sellerLikeCount.getText());
         return seller;
     }
 

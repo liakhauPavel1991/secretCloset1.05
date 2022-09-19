@@ -1,5 +1,8 @@
 package models;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import tools.constants.Splitters;
 import tools.exeptions.ListSizeException;
 import tools.utils.StringUtils;
@@ -9,6 +12,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+@Getter
+@Setter
+@ToString
 public class Product {
     private String brand;
     private int finalPrice;
@@ -17,38 +23,6 @@ public class Product {
     private String originalPriceCurrency;
     private int discountPercentValue;
     private String discountPercentString;
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public int getFinalPrice() {
-        return finalPrice;
-    }
-
-    public String getFinalPriceCurrency() {
-        return finalPriceCurrency;
-    }
-
-    public int getOriginalPrice() {
-        return originalPrice;
-    }
-
-    public String getOriginalPriceCurrency() {
-        return originalPriceCurrency;
-    }
-
-    public int getDiscountPercentValue() {
-        return discountPercentValue;
-    }
-
-    public String getDiscountPercentString() {
-        return discountPercentString;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
 
     public void setFinalPrice(String finalPrice) {
         List<String> priceInfo = Arrays.stream(finalPrice.trim().split(Splitters.SPACE)).collect(Collectors.toList());
@@ -90,17 +64,4 @@ public class Product {
         return Objects.hash(brand, finalPrice, finalPriceCurrency, originalPrice, originalPriceCurrency, discountPercentValue, discountPercentString);
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "brand='" + brand + '\'' +
-                ", finalPrice=" + finalPrice +
-                ", finalPriceCurrency='" + finalPriceCurrency + '\'' +
-                ", originalPrice=" + originalPrice +
-                ", originalPriceCurrency='" + originalPriceCurrency + '\'' +
-                ", discountPercentValue=" + discountPercentValue +
-                ", discountPercentString='" + discountPercentString + '\'' +
-                ", hasDiscount='" + hasDiscount() + '\'' +
-                '}';
-    }
 }

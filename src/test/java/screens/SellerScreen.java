@@ -22,15 +22,15 @@ public class SellerScreen extends BaseScreen {
 
     public Seller getSeller() {
         Seller seller = new Seller();
-        seller.setName(sellerNameLabel.getText())
-                .setId(sellerIdLabel.getText())
-                .setRate(sellerRateLabel.getText())
-                .setTime(sellerSellerTimeLabel.getText())
-                .setRating(sellerRatingLabel.getText())
-                .setLikes(sellerLikesLabel.getText())
-                .setSells(sellerSellsLabel.getText())
-                .setCity(sellerCityLabel.getText())
-                .setMember(sellerMemberLabel.getText());
+        seller.setName(sellerNameLabel.getText());
+        seller.setId(sellerIdLabel.getText());
+        seller.setRate(sellerRateLabel.getText());
+        seller.setTime(sellerSellerTimeLabel.getText());
+        seller.setRating(sellerRatingLabel.getText());
+        seller.setLikes(sellerLikesLabel.getText());
+        seller.setSells(sellerSellsLabel.getText());
+        seller.setCity(sellerCityLabel.getText());
+        seller.setMember(sellerMemberLabel.getText());
         return seller;
     }
 }
