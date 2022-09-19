@@ -4,8 +4,10 @@ import tools.constants.Splitters;
 import tools.exeptions.ListSizeException;
 import tools.utils.StringUtils;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Product {
     private String brand;
@@ -49,7 +51,7 @@ public class Product {
     }
 
     public void setFinalPrice(String finalPrice) {
-        List<String> priceInfo = List.of(finalPrice.trim().split(Splitters.SPACE));
+        List<String> priceInfo = Arrays.stream(finalPrice.trim().split(Splitters.SPACE)).collect(Collectors.toList());
         if (priceInfo.size() != 2) {
             throw new ListSizeException("Price should contain price value and price currency");
         }
@@ -58,7 +60,7 @@ public class Product {
     }
 
     public void setOriginalPrice(String originalPrice) {
-        List<String> discountAmountInfo = List.of(originalPrice.trim().split(Splitters.SPACE));
+        List<String> discountAmountInfo = Arrays.stream(originalPrice.trim().split(Splitters.SPACE)).collect(Collectors.toList());
         if (discountAmountInfo.size() != 2) {
             throw new ListSizeException("Discount amount should contain discount value and discount currency");
         }

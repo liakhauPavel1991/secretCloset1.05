@@ -12,6 +12,7 @@ import tools.utils.supportModels.Bound;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class ProductRibbonScreen extends BaseScreen {
     private static final By RIBBON_CONTAINER_BY = By.id("com.zdv.secretcloset:id/recycle");
@@ -39,7 +40,7 @@ public class ProductRibbonScreen extends BaseScreen {
     public Product getFirstProductWithDiscount() {
         List<ILabel> bannersWithDiscount = getVisibleBanners()
             .stream()
-            .filter(banner -> getProductForBanner(banner).hasDiscount()).toList();
+            .filter(banner -> getProductForBanner(banner).hasDiscount()).collect(Collectors.toList());
         ILabel firstBannerWithDiscount = bannersWithDiscount
                 .stream()
                 .findFirst()
@@ -59,7 +60,7 @@ public class ProductRibbonScreen extends BaseScreen {
         return getBanners()
                 .stream()
                 .filter(banner -> ScreenUtils.isFullViewOnScreen(banner, getBannerDimension()))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     private List<ILabel> getBanners() {

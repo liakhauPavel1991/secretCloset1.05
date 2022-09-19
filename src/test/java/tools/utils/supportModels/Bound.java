@@ -5,6 +5,7 @@ import tools.constants.Splitters;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Bound {
     private static int xUpPoint;
@@ -18,7 +19,7 @@ public class Bound {
     }
 
     private static void initialize(String bounds) {
-        List<String> points = Arrays.stream(bounds.split(Splitters.BOUNDS)).filter(el -> !el.isEmpty()).toList();
+        List<String> points = Arrays.stream(bounds.split(Splitters.BOUNDS)).filter(el -> !el.isEmpty()).collect(Collectors.toList());
         xUpPoint = Integer.parseInt(points.get(0));
         yUpPoint = Integer.parseInt(points.get(1));
         xDownPoint = Integer.parseInt(points.get(2));
