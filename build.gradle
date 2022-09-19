@@ -1,22 +1,52 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.8.1'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+def allureVersion = "2.13.6"
+def testngVersion = "6.14.3"
+def seleniumVersion = "4.1.0"
+def aqualityVersion = "3.0.0-beta"
+def slf4jVersion = "1.7.30"
+def lombokVersion = "1.18.24"
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+allure {
+    autoconfigure = true
+    aspectjweaver = true
+    version = allureVersion
+    clean = true
+
+    useTestNG {
+        version = allureVersion
+    }
+}
+
+test {
+    ignoreFailures = true
+    useTestNG() {
+        suites ('src/test/resources/suites/DashboardSuite.xml')
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'com.github.aquality-automation:aquality-appium-mobile:3.0.0-beta'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.1.0'
-    implementation 'junit:junit:4.13.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    implementation ("com.github.aquality-automation:aquality-appium-mobile:$aqualityVersion")
+    implementation ("org.seleniumhq.selenium:selenium-java:$seleniumVersion")
+    testImplementation("io.qameta.allure:allure-java-commons:$allureVersion")
+    testImplementation("org.testng:testng:$testngVersion")
+    testImplementation("org.slf4j:slf4j-simple:$slf4jVersion")
+    compileOnly ("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor ("org.projectlombok:lombok:$lombokVersion")
+    testCompileOnly ("org.projectlombok:lombok:$lombokVersion")
+    testAnnotationProcessor ("org.projectlombok:lombok:$lombokVersion")
 }
 
-test {
-    useJUnitPlatform()
+configurations {
+    testCompile
 }
